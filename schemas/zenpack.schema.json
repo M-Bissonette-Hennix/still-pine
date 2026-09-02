@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/still-pine/zenpack.schema.json",
+  "title": "Still Pine Zenpack",
+  "type": "object",
+  "required": ["format","id","version","title","session"],
+  "properties": {
+    "format": {"const":"still-pine.zenpack/v1"},
+    "id": {"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},
+    "version": {"type":"string"},
+    "title": {"type":"string"},
+    "shortTitle": {"type":"string"},
+    "tradition": {"type":"string"},
+    "description": {"type":"string"},
+    "weeklyTeaching": {"type":"string"},
+    "weeklyTeachingNote": {"type":"string"},
+    "session": {
+      "type":"object",
+      "required":["title","stages"],
+      "properties": {
+        "title":{"type":"string"},
+        "stages":{
+          "type":"array","minItems":1,
+          "items":{
+            "type":"object",
+            "required":["id","title","durationSec","instruction"],
+            "properties":{
+              "id":{"type":"string"},"kind":{"type":"string"},"title":{"type":"string"},
+              "durationSec":{"type":"integer","minimum":1},"instruction":{"type":"string"},
+              "secondary":{"type":"string"},
+              "cues":{"type":"array","items":{"type":"object","required":["atSec","text"],"properties":{"atSec":{"type":"integer","minimum":0},"text":{"type":"string"}}}},
+              "substeps":{"type":"array","items":{"type":"object","required":["title","durationSec"],"properties":{"title":{"type":"string"},"cue":{"type":"string"},"durationSec":{"type":"integer","minimum":1}}}}
+            }
+          }
+        }
+      }
+    }
+  }
+}
