@@ -1,0 +1,14 @@
+{
+  "name": "Still Pine — Sōtō Practice Companion",
+  "short_name": "Still Pine",
+  "description": "A quiet modular companion for daily zazen and Sōtō Zen study.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#eee8dc",
+  "theme_color": "#eee8dc",
+  "icons": [
+    {"src":"./assets/icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"./assets/icon-512.png","sizes":"512x512","type":"image/png"}
+  ]
+}

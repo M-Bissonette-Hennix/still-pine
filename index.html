@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#eee8dc" />
+  <meta name="description" content="A quiet, modular Sōtō Zen practice companion for guided daily zazen and study." />
+  <title>Still Pine — Sōtō Practice Companion</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <div class="enso" aria-hidden="true"></div>
+      <div>
+        <p class="eyebrow">坐禅日課 · DAILY PRACTICE</p>
+        <h1>Still Pine</h1>
+        <p class="subtitle">Sōtō practice companion</p>
+      </div>
+    </div>
+    <button class="icon-button" id="settingsButton" aria-label="Open settings" title="Settings">☰</button>
+  </header>
+
+  <nav class="tabs" aria-label="Primary">
+    <button data-view="today" class="tab active">Today</button>
+    <button data-view="practice" class="tab">Practice</button>
+    <button data-view="library" class="tab">Library</button>
+    <button data-view="packs" class="tab">Packs</button>
+  </nav>
+
+  <main id="app" class="app-shell" tabindex="-1">
+    <section id="view-today" class="view active" aria-labelledby="today-title">
+      <div class="hero card ink-card">
+        <div>
+          <p class="eyebrow">CURRENT FORM</p>
+          <h2 id="today-title">Foundation I — The Body That Sits</h2>
+          <p id="today-description" class="lede">Loading practice…</p>
+        </div>
+        <div class="hero-actions">
+          <button class="primary" id="startFromToday">Begin today’s sitting</button>
+          <span id="sessionLength" class="quiet-label"></span>
+        </div>
+      </div>
+
+      <div class="two-column">
+        <section class="card">
+          <p class="eyebrow">THIS WEEK</p>
+          <h3>One proposition</h3>
+          <blockquote id="weeklyTeaching">Practice and realization are not two.</blockquote>
+          <p id="weeklyTeachingNote" class="muted"></p>
+        </section>
+
+        <section class="card">
+          <p class="eyebrow">AFTER ZAZEN</p>
+          <h3>One-sentence record</h3>
+          <p class="muted">Record only what repeatedly captured the mind. No score, streak, or rating.</p>
+          <form id="quickLogForm" class="stack">
+            <textarea id="quickLogText" rows="3" maxlength="240" placeholder="What repeatedly captured the mind?"></textarea>
+            <button class="secondary" type="submit">Save today’s note</button>
+          </form>
+          <p id="lastLog" class="small muted"></p>
+        </section>
+      </div>
+
+      <section class="card" id="todayReadingCard">
+        <p class="eyebrow">ASSIGNED READING</p>
+        <div id="todayReading"></div>
+      </section>
+
+      <section class="card inquiry-card">
+        <p class="eyebrow">DHARMA INQUIRY · AFTER SITTING ONLY</p>
+        <div id="inquiryList"></div>
+      </section>
+    </section>
+
+    <section id="view-practice" class="view" aria-labelledby="practice-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">GUIDED SITTING</p>
+          <h2 id="practice-title">Daily practice</h2>
+        </div>
+        <span id="practiceDurationBadge" class="pill"></span>
+      </div>
+      <div id="phasePreview" class="phase-list"></div>
+      <button class="primary wide" id="startPractice">Enter practice mode</button>
+      <p class="practice-note">Once started, instructions reduce to a single cue at a time. The app will advance automatically and sound one quiet bell at transitions.</p>
+    </section>
+
+    <section id="view-library" class="view" aria-labelledby="library-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">STUDY</p>
+          <h2 id="library-title">Reading room</h2>
+        </div>
+      </div>
+      <div class="library-tools card">
+        <div>
+          <h3>Personal text reader</h3>
+          <p class="muted">Open your own legally obtained <code>.txt</code> or <code>.md</code> text locally. The file never leaves your device.</p>
+        </div>
+        <label class="file-button">Open text<input id="personalTextInput" type="file" accept=".txt,.md,text/plain,text/markdown" /></label>
+      </div>
+      <div id="libraryList" class="library-grid"></div>
+      <article id="reader" class="reader card hidden" aria-live="polite">
+        <div class="reader-header">
+          <div>
+            <p class="eyebrow">READER</p>
+            <h3 id="readerTitle"></h3>
+          </div>
+          <button class="secondary" id="closeReader">Close</button>
+        </div>
+        <div id="readerBody" class="reader-body"></div>
+      </article>
+    </section>
+
+    <section id="view-packs" class="view" aria-labelledby="packs-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MODULAR CURRICULUM</p>
+          <h2 id="packs-title">Practice packs</h2>
+        </div>
+      </div>
+      <section class="card">
+        <h3>Install a new practice package</h3>
+        <p class="muted">Import a <code>.zenpack.json</code> file issued in this thread. Imported packs are stored only in this browser until you also add them to your repository.</p>
+        <label class="file-button">Import practice pack<input id="packInput" type="file" accept=".json,application/json" /></label>
+        <p id="packImportStatus" class="small muted"></p>
+      </section>
+      <div id="packList" class="pack-list"></div>
+    </section>
+  </main>
+
+  <aside id="settingsPanel" class="settings-panel hidden" aria-labelledby="settings-title">
+    <div class="settings-head">
+      <div>
+        <p class="eyebrow">LOCAL SETTINGS</p>
+        <h2 id="settings-title">Practice environment</h2>
+      </div>
+      <button class="icon-button" id="closeSettings" aria-label="Close settings">×</button>
+    </div>
+    <label class="toggle-row"><span>Transition bell</span><input id="settingBell" type="checkbox" checked /></label>
+    <label class="toggle-row"><span>Vibrate at transitions</span><input id="settingVibrate" type="checkbox" checked /></label>
+    <label class="toggle-row"><span>Keep screen awake during sitting</span><input id="settingWake" type="checkbox" checked /></label>
+    <label class="stack"><span>Reader text size</span><input id="settingFontSize" type="range" min="17" max="26" value="20" /></label>
+    <p class="small muted">All practice history and imported packs stay in this browser. No account, analytics, or cloud database is used.</p>
+  </aside>
+  <div id="scrim" class="scrim hidden"></div>
+
+  <section id="practiceOverlay" class="practice-overlay hidden" aria-live="polite">
+    <div class="practice-topline">
+      <span id="overlayPhaseIndex" class="eyebrow"></span>
+      <button id="exitPractice" class="overlay-button">Exit</button>
+    </div>
+    <div class="practice-center">
+      <p id="overlayKind" class="eyebrow"></p>
+      <h2 id="overlayTitle"></h2>
+      <p id="overlayInstruction" class="overlay-instruction"></p>
+      <div id="overlaySubstep" class="substep"></div>
+      <time id="overlayTimer">00:00</time>
+      <div class="timer-track" aria-hidden="true"><div id="timerProgress"></div></div>
+      <p id="overlaySecondary" class="overlay-secondary"></p>
+    </div>
+    <div class="practice-controls">
+      <button id="previousPhase" class="overlay-button">Previous</button>
+      <button id="pausePractice" class="overlay-primary">Pause</button>
+      <button id="nextPhase" class="overlay-button">Next</button>
+    </div>
+  </section>
+
+  <template id="readingCardTemplate">
+    <article class="card reading-card">
+      <p class="eyebrow reading-type"></p>
+      <h3 class="reading-title"></h3>
+      <p class="reading-author muted"></p>
+      <p class="reading-description"></p>
+      <div class="reading-actions"></div>
+    </article>
+  </template>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
