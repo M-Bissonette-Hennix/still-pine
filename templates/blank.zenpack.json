@@ -1,0 +1,27 @@
+{
+  "format": "still-pine.zenpack/v1",
+  "id": "replace-me",
+  "version": "1.0.0",
+  "title": "New Practice Pack",
+  "shortTitle": "New Pack",
+  "tradition": "Sōtō Zen",
+  "description": "",
+  "weeklyTeaching": "",
+  "weeklyTeachingNote": "",
+  "session": {
+    "title": "Daily Zazen",
+    "stages": [
+      {
+        "id": "stage-1",
+        "kind": "Practice",
+        "title": "Stage title",
+        "durationSec": 300,
+        "instruction": "One concise instruction visible during practice.",
+        "secondary": "Optional quiet secondary instruction.",
+        "cues": []
+      }
+    ]
+  },
+  "afterPractice": {"logPrompt":"What repeatedly captured the mind?","inquiries":[]},
+  "study": {"assignedReadingIds":[],"contemplation":""}
+}
