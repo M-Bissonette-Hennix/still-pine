@@ -1,0 +1,6 @@
+{
+  "format": "still-pine.manifest/v1",
+  "packs": [
+    "./content/packs/foundation-01.zenpack.json"
+  ]
+}
