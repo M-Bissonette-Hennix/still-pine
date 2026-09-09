@@ -1,0 +1,29 @@
+{
+  "format": "still-pine.library/v1",
+  "items": [
+    {
+      "id": "fukanzazengi-official",
+      "type": "Primary text · official external source",
+      "title": "Fukanzazengi — Universally Recommended Instructions for Zazen",
+      "author": "Eihei Dōgen",
+      "description": "Read once this week as practice instruction rather than as an abstract historical document. This shelf links to the official Sōtō Zen source rather than reproducing a modern copyrighted translation inside the app.",
+      "externalUrl": "https://www.sotozen.com/eng/zazen/advice/fukanzanzeng.html"
+    },
+    {
+      "id": "fukanzazengi-notes",
+      "type": "Study companion · local",
+      "title": "Fukanzazengi — Week One Reading Notes",
+      "author": "Still Pine curriculum notes",
+      "description": "A short local guide to what to notice in the text during Foundation I, without replacing Dōgen’s text itself.",
+      "localPath": "./content/readings/fukanzazengi-study-notes.md"
+    },
+    {
+      "id": "soto-zazen-howto",
+      "type": "Practice reference · official external source",
+      "title": "How to Do Zazen",
+      "author": "Sōtō Zen Buddhism International Center",
+      "description": "Contemporary official posture and practice guidance, useful as a reference for seiza, hokkaijōin, gaze, breathing, and entering/leaving the posture.",
+      "externalUrl": "https://www.sotozen.com/eng/zazen/howto/index.html"
+    }
+  ]
+}
